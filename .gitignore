@@ -1,0 +1,16 @@
+# data: never commit scraped pages or brand imagery
+data/raw/*
+!data/raw/.gitkeep
+
+# python
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# node
+node_modules/
+site/dist/
+
+.DS_Store
+.env
