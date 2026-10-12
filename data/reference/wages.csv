@@ -1,1 +1,8 @@
 country,iso3,wage_monthly_local,currency,year,wage_basis,source_name,source_url,fx_rate_to_usd,fx_year,wage_hourly_usd,notes
+Bangladesh,BGD,155.70,USD,2025,mean_earnings,MOCK,,1,2025,,Hourly value from pitch × 173
+China,CHN,190.30,USD,2025,mean_earnings,MOCK,,1,2025,,
+Vietnam,VNM,207.60,USD,2025,mean_earnings,MOCK,,1,2025,,
+Egypt,EGY,259.50,USD,2025,mean_earnings,MOCK,,1,2025,,
+Portugal,PRT,899.60,USD,2025,mean_earnings,MOCK,,1,2025,,
+Italy,ITA,1643.50,USD,2025,mean_earnings,MOCK,,1,2025,,ILO figure is a floor estimate; see Prato reporting
+USA,USA,2249.00,USD,2025,mean_earnings,MOCK,,1,2025,,

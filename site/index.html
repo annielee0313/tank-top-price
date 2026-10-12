@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tank Top Prices</title>
+  <meta name="description" content="Why similar tank tops can cost $5 — or $700. A scrollytelling look at what's inside the price tag." />
+  <link rel="stylesheet" href="/src/styles/main.css" />
+</head>
+<body>
+  <div id="mock-banner" class="mock-banner" hidden>Mock data — numbers are placeholders, not reporting.</div>
+
+  <header class="hero">
+    <p class="kicker">Data story</p>
+    <h1>Why similar tank tops can cost $5 — or $700</h1>
+    <p class="dek">A plain white tank top, no branding and no graphics, can cost {{price:shein}} or {{price:the-row}}. What's actually inside the price tag?</p>
+    <p class="byline">By Annie Lee</p>
+  </header>
+
+  <section id="scrolly" class="scrolly">
+    <div class="sticky" aria-hidden="true">
+      <svg id="stage" role="img"></svg>
+    </div>
+    <div class="steps">
+      <div class="step" data-step="1"><p>Two plain white tanks. One from Shein costs <strong>{{price:shein}}</strong>. One from The Row costs <strong>{{price:the-row}}</strong>, which is {{ratio:shein:the-row}} times as much.</p></div>
+      <div class="step" data-step="2"><p>The obvious answer is the fabric. The Row's tank is <strong>{{comp:the-row}}</strong>. Shein's is <strong>{{comp:shein}}</strong>.</p></div>
+      <div class="step" data-step="3"><p>Fabric prices do differ. Cotton costs more per yard than polyester. A basic tank uses about 1 to 1.5 yards.</p></div>
+      <div class="step" data-step="4"><p>Put the fabric in each tank and the material comes to about <strong>{{material:shein}}</strong> for Shein and <strong>{{material:the-row}}</strong> for The Row.</p></div>
+      <div class="step" data-step="5"><p>For Shein, fabric is <strong>{{share:shein}}</strong> of the price. For The Row, it's <strong>{{share:the-row}}</strong>.</p></div>
+      <div class="step" data-step="6"><p>Now compare Brandy Melville. Both are {{comp:brandy-melville}}. Both are made in Europe. They're <strong>{{gap:brandy-melville:the-row}}</strong> apart.</p></div>
+      <div class="step" data-step="7"><p>Both labels say Italy, where a garment worker earns about {{wage:Italy}} an hour. <span class="caveat">*Reporting suggests Brandy's "Made in Italy" may mean Prato's informal workshops, where actual wages are disputed.</span></p></div>
+      <div class="step" data-step="8"><p>Garment wages vary more than tenfold depending on where a tank is sewn.</p></div>
+      <div class="step" data-step="9"><p>Here are all {{count}} tanks, sorted by price. Scroll on to explore them yourself.</p></div>
+    </div>
+  </section>
+
+  <section id="explore" class="explore">
+    <h2>Explore all the tanks</h2>
+    <div class="controls">
+      <div class="seg" role="group" aria-label="View">
+        <button data-view="composition" aria-pressed="true">Composition</button>
+        <button data-view="cost" aria-pressed="false">Est. cost</button>
+      </div>
+      <div class="seg" role="group" aria-label="Sort by">
+        <span class="seg-label">Sort by</span>
+        <button data-sort="price" aria-pressed="true">Price ↑</button>
+        <button data-sort="cotton" aria-pressed="false">Cotton %</button>
+        <button data-sort="country" aria-pressed="false">Country A–Z</button>
+      </div>
+    </div>
+    <ul id="legend" class="legend"></ul>
+    <div id="grid" class="grid"></div>
+  </section>
+
+  <aside id="card" class="card" hidden aria-live="polite">
+    <button class="card-close" aria-label="Close">×</button>
+    <div class="card-body"></div>
+  </aside>
+
+  <footer class="footer">
+    <p><strong>Methodology.</strong> Material cost = Σ(fiber share × fabric cost per yard) × {{yards}} yard. Labor = sewing minutes × hourly garment wage in the country of manufacture. Wages are ILO-based floor estimates. All values here are mock data.</p>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

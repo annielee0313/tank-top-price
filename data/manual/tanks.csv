@@ -1,1 +1,19 @@
-tank_id,brand,product_name,url,archive_url,date_collected,price_listed,currency,on_sale,composition_raw,cotton_pct,polyester_pct,elastane_pct,other_pct,other_fibers,cotton_type,cotton_tier,fabric_construction,fabric_weight_gsm,country_of_manufacture,country_source,country_caveat,caveat_note,screenshot_file,verified_by,verified_date,status,notes
+tank_id,brand,product_name,url,archive_url,date_collected,price_listed,currency,on_sale,composition_raw,cotton_pct,polyester_pct,elastane_pct,other_pct,other_fibers,cotton_type,cotton_tier,fabric_construction,fabric_weight_gsm,country_of_manufacture,country_source,country_caveat,caveat_note,verified_by,verified_date,status,is_mock,notes
+shein,Shein,Basic Rib Tank,,,,5,USD,false,95% Polyester 5% Elastane,0,95,5,0,,,,rib,,China,,false,,,,draft,true,Values from pitch; unverified
+mock-01,Mock Brand 01,Everyday Tank,,,,8,USD,false,60% Cotton 35% Polyester 5% Elastane,60,35,5,0,,conventional,1,jersey,,Bangladesh,,false,,,,draft,true,
+mock-02,Mock Brand 02,Ribbed Tank,,,,10,USD,false,95% Cotton 5% Elastane,95,0,5,0,,conventional,1,rib,,Bangladesh,,false,,,,draft,true,
+mock-03,Mock Brand 03,Fitted Tank,,,,12.9,USD,false,92% Cotton 8% Elastane,92,0,8,0,,conventional,1,rib,,Vietnam,,false,,,,draft,true,
+brandy-melville,Brandy Melville,Basic Tank,,,,14,USD,false,100% Cotton,100,0,0,0,,unspecified,1,rib,,Italy,,true,"Made-in-Italy label; reporting (NYT 2024, HBO doc) points to Prato's informal sector",,,draft,true,Pitch lists both $14 and $24 — resolve on collection day
+mock-04,Mock Brand 04,Soft Tank,,,,19.9,USD,false,57% Cotton 38% Modal 5% Elastane,57,0,5,38,modal,conventional,1,jersey,,China,,false,,,,draft,true,
+mock-05,Mock Brand 05,Organic Tank,,,,25,USD,false,100% Organic Cotton,100,0,0,0,,organic,2,jersey,,Vietnam,,false,,,,draft,true,
+mock-06,Mock Brand 06,Rib Tank,,,,30,USD,false,95% Cotton 5% Elastane,95,0,5,0,,combed,2,rib,,Egypt,,false,,,,draft,true,
+kotn,Kotn,Essential Tank,,,,42,USD,false,100% Egyptian Cotton,100,0,0,0,,egyptian,3,rib,,Portugal,,false,,,,draft,true,Values from pitch; unverified
+mock-07,Mock Brand 07,Pima Tank,,,,58,USD,false,100% Pima Cotton,100,0,0,0,,pima,3,jersey,,USA,,false,,,,draft,true,
+mock-08,Mock Brand 08,Stretch Tank,,,,68,USD,false,94% Cotton 6% Elastane,94,0,6,0,,combed,2,rib,,Portugal,,false,,,,draft,true,
+mock-09,Mock Brand 09,Supima Tank,,,,95,USD,false,100% Supima Cotton,100,0,0,0,,supima,3,jersey,,USA,,false,,,,draft,true,
+mock-10,Mock Brand 10,Classic Tank,,,,120,USD,false,100% Cotton,100,0,0,0,,unspecified,1,rib,,Portugal,,false,,,,draft,true,
+mock-11,Mock Brand 11,Sculpt Tank,,,,165,USD,false,92% Cotton 8% Elastane,92,0,8,0,,unspecified,1,rib,,Italy,,false,,,,draft,true,
+mock-12,Mock Brand 12,Rib Tank,,,,220,USD,false,100% Cotton,100,0,0,0,,combed,2,rib,,Italy,,false,,,,draft,true,
+mock-13,Mock Brand 13,Silk-Blend Tank,,,,290,USD,false,70% Cotton 30% Silk,70,0,0,30,silk,combed,2,jersey,,Italy,,false,,,,draft,true,
+mock-14,Mock Brand 14,Fine Rib Tank,,,,420,USD,false,100% Egyptian Cotton,100,0,0,0,,egyptian,3,rib,,Italy,,false,,,,draft,true,
+the-row,The Row,Frankie Tank,,,,690,USD,false,100% Cotton,100,0,0,0,,unspecified,1,rib,,Italy,,false,,,,draft,true,Values from pitch; fiber grade unknown — likely above commodity

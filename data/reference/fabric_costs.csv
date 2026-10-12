@@ -1,1 +1,8 @@
-fiber,cost_per_yard_low,cost_per_yard_mid,cost_per_yard_high,unit,source_name,source_url,date_accessed,notes
+fiber,label,cost_per_yard_low,cost_per_yard_mid,cost_per_yard_high,unit,method,source_name,source_url,date_accessed,notes
+cotton_t1,Cotton (conventional),2.50,3.80,5.00,USD/yd,direct,MOCK,,,Value from pitch
+cotton_t2,Cotton (organic / combed),4.00,5.50,7.50,USD/yd,direct,MOCK,,,
+cotton_t3,Cotton (pima / supima / Egyptian),6.00,8.00,12.00,USD/yd,direct,MOCK,,,
+polyester,Polyester,0.80,1.20,2.00,USD/yd,direct,MOCK,,,Value from pitch
+elastane,Elastane,7.00,9.50,12.00,USD/yd,implied_from_blend,MOCK,,,"Back-solved: (95/5 poly-spandex $/yd − 0.95 × polyester $/yd) / 0.05"
+modal,Modal,3.50,4.50,6.00,USD/yd,direct,MOCK,,,
+silk,Silk,12.00,18.00,30.00,USD/yd,direct,MOCK,,,

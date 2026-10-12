@@ -11,43 +11,36 @@ A scrollytelling data story about what's actually inside the price of a plain wh
 ```
 tank-top-price/
 ├── README.md                  ← you are here (also the repo plan)
-├── LICENSE                    ← MIT for code
-├── DATA_LICENSE               ← CC BY 4.0 for data/processed + data/reference
 ├── docs/
 │   ├── data-collection-plan.md
-│   ├── methodology.md         ← public-facing: assumptions, caveats, sources
-│   └── sources.md             ← every citation, with archive links
+│   └── methodology.md         ← assumptions, known issues and their fixes
 ├── data/
-│   ├── raw/                   ← scraped HTML + screenshots (GITIGNORED)
+│   ├── raw/                   ← scraped HTML (GITIGNORED)
 │   ├── manual/tanks.csv       ← hand-verified product data (source of truth)
 │   ├── reference/
 │   │   ├── fabric_costs.csv
 │   │   └── wages.csv
 │   └── processed/tanks.json   ← generated; what the site loads
 ├── scripts/                   ← Python data pipeline
-│   ├── config.py              ← YARDS_PER_TANK, SAM_MINUTES + citations
-│   ├── scrape.py              ← JSON-LD price + composition suggestions
-│   ├── clean.py               ← fiber-name normalization
+│   ├── config.py              ← YARDS_*, SAM_MINUTES_* + citations
+│   ├── (scrape.py, clean.py)  ← to write during real collection
 │   ├── build_costs.py         ← material / labor / retail-gap → tanks.json
 │   └── validate.py            ← runs in CI
 ├── design/
-│   ├── sketches/              ← scans of hand-drawn storyboards
-│   └── figma.md               ← links to Figma frames
+│   └── sketches/              ← scans of hand-drawn storyboards
 ├── site/                      ← front end (Vite)
 │   ├── index.html
 │   ├── package.json
-│   ├── public/data/           ← tanks.json copied here at build
+│   ├── vite.config.js
+│   ├── public/data/           ← tanks.json copied here (generated, gitignored)
 │   └── src/
-│       ├── main.js
-│       ├── scrolly.js         ← Scrollama step → scene state
-│       ├── scenes/            ← one module per scroll trigger (01-hook.js … 09-grid.js)
-│       ├── viz/
-│       │   ├── tank.js        ← SVG silhouette + composition fill (D3)
-│       │   ├── tankGrid.js    ← grid layout, sort, GSAP reorder
-│       │   ├── donut.js       ← Est Cost view
-│       │   └── detailCard.js  ← tooltip / mobile bottom sheet
-│       ├── embeds/            ← Datawrapper iframe wrappers
-│       └── styles/
+│       ├── main.js            ← loads data, fills {{tokens}} in copy, wires Scrollama
+│       ├── stage.js           ← sticky graphic: one function per scroll step
+│       ├── explorer.js        ← full grid: sort (GSAP Flip), composition ↔ cost view
+│       ├── card.js            ← detail card / mobile bottom sheet
+│       ├── format.js          ← $ / % formatting, country flags
+│       ├── viz/tank.js        ← SVG tank silhouette fill + donut (D3)
+│       └── styles/main.css
 └── .github/workflows/
     ├── validate-data.yml      ← runs scripts/validate.py on every PR touching data/
     └── deploy.yml             ← builds site/ → GitHub Pages on push to main
@@ -87,17 +80,34 @@ Why vanilla JS + Vite: the piece is one page with a handful of D3 modules. A fra
 
 Open one issue per scroll trigger, labelled `scene`, `viz`, `data`, `a11y` or `editorial`.
 
-## Running locally
+## Getting started
+
+You need Node 20+ and Python 3.11+ (no extra Python packages for the pipeline).
 
 ```bash
-# data
-python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-python scripts/validate.py
-
-# site (once scaffolded)
-cd site && npm install && npm run dev
+cd site
+npm install
+npm run dev        # rebuilds data/processed/tanks.json, then serves http://localhost:5173
 ```
+
+Edit any CSV in `data/`, then run `npm run data` (or restart `npm run dev`) to rebuild the numbers.
+
+```bash
+python3 scripts/validate.py            # everyday data checks
+python3 scripts/validate.py --release  # pre-publish: fails while mock data remains
+```
+
+## Watching it as you build
+
+| Where | What you see | When |
+|---|---|---|
+| **Browser at `localhost:5173`** | the page itself; saves to `site/src` reload instantly | every save |
+| **VS Code Source Control panel** | exactly which files changed, line by line | before every commit |
+| **GitHub → Commits / Pull requests** | the history of the project, one PR per feature | every push |
+| **GitHub → Actions** | data validation + deploy runs (green ✓ / red ✗) | every push to `main` |
+| **GitHub Pages URL** | the live public version | ~1 min after each push to `main` |
+
+The data is currently **mock**. A yellow banner shows on the page until every row in `data/manual/tanks.csv` has `is_mock = false`.
 
 ## Credits
 

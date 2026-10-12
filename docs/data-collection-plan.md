@@ -39,9 +39,9 @@ Goal: a small, fully sourced dataset of **18 plain white tank tops** (fallback: 
 | `country_source` | product page / care label photo / customer service / press | how you know |
 | `country_caveat` | true | e.g. Brandy Melville / Prato → asterisk in viz |
 | `caveat_note` | "NYT 2024; HBO doc" | short text + link for the annotation |
-| `screenshot_file` | `raw/the-row-frankie_2026-10-14.png` | local only, gitignored |
 | `verified_by` / `verified_date` | AL / 2026-10-20 | second-pass check |
 | `status` | draft / verified / excluded | |
+| `is_mock` | true / false | `validate.py --release` fails while any row is mock |
 | `notes` | | |
 
 **Inclusion criteria.** Every tank must be: women's sleeveless tank, white or ivory, no visible logo or graphic, sold on the brand's own US site, with fiber composition published somewhere. Record country of manufacture where you can find it. A missing country doesn't exclude a tank, but it can't appear in the country sort.
@@ -106,9 +106,8 @@ With only 18 products, a fully automated scraper costs more effort than it saves
    - tries to read the **schema.org `Product` JSON-LD** (`offers.price`, `priceCurrency`), which most e-commerce sites include
    - searches the page text for composition patterns (`\d+%\s*(cotton|polyester|elastane|spandex|modal|…)`) and records a *suggestion*
    - if the request fails, logs `needs_manual` instead of crashing
-2. **Manual pass:** open each page and take a full-page screenshot. Copy `composition_raw` verbatim. Look for country of manufacture in the details or "care" section, then in product photos of the label. If it's still missing, email customer service and log that as the `country_source`.
+2. **Manual pass:** open each page and copy `composition_raw` verbatim. Look for country of manufacture in the details or "care" section. If it's still missing, email customer service and log that as the `country_source`.
 3. **Archive:** submit every URL to the Wayback Machine (`https://web.archive.org/save/<url>`) on collection day. Store the snapshot URL as the public citation.
-4. **Optional, but strong for the story:** buy the 2–3 anchor tanks (Shein, Brandy, maybe Kotn) and photograph the physical care labels. It's the most defensible source for country, and good art.
 
 **Normalization rules** (used in `clean.py`):
 - spandex = elastane = Lycra → `elastane_pct`
@@ -128,7 +127,7 @@ With only 18 products, a fully automated scraper costs more effort than it saves
 - [ ] no duplicate `tank_id`
 - [ ] **Manual:** before publishing, someone other than you re-checks 3 random rows against the archive snapshots
 
-⚠️ **Inconsistency already in the pitch:** the Brandy Melville price appears as **$24** on page 2 but **$14** on pages 5–6 (and "$676 apart" assumes $14). Resolve this during collection and update the copy to match.
+⚠️ **Inconsistency already in the pitch:** the Brandy Melville price appears as **$24** on page 2 but **$14** on pages 5–6. See [methodology.md](methodology.md#1-brandy-melville-price-mismatch) for the fix.
 
 ---
 
@@ -146,6 +145,6 @@ With only 18 products, a fully automated scraper costs more effort than it saves
 | — | **Freeze the dataset** (tag `data-v1.0`) before the visualization work speeds up |
 
 ## 5. Ethics & legal notes
-- Commit **facts and archive links**, not brands' HTML or product photography. `data/raw/` stays out of git.
-- Draw the tank silhouettes yourself as SVG. Don't use product images.
+- Commit **facts and archive links** only. Scraped HTML in `data/raw/` stays out of git.
+- No product photography anywhere: the data fills our own SVG tank silhouettes.
 - Keep the Brandy Melville labor claims tied to published reporting with links. Agree the wording with your editor before publishing.
