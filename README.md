@@ -2,7 +2,7 @@
 
 A scrollytelling data story about what's actually inside the price of a plain white tank top: fabric, labor, and everything else.
 
-**Live:** `https://<your-username>.github.io/tank-top-price/` *(after first deploy)*
+**Live:** `https://annielee0313.github.io/tank-top-price/` *(after first deploy)*
 
 ---
 
